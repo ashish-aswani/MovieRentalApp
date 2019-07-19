@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MovieRentalApp.Models.Customer>
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Customers</h2>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Customer Name</th>
+        <th>Discount</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@Html.ActionLink(item.CustomerName, "CustomerDetails", new { item.Id })</td>
+
+            <td>@item.MembershipType.DiscountRate</td>
+        </tr>
+    }
+</table>
+
+<button>@Html.ActionLink("Add Customer", "CustomerForm", "Home")</button>

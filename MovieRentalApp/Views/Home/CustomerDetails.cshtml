@@ -1,0 +1,45 @@
+﻿@model MovieRentalApp.Models.Customer
+@{
+    ViewBag.Title = "CustomerDetails";
+}
+
+<h2>CustomerDetails</h2>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Customer Id</th>
+        <th>Date of Birth</th>
+        <th>News Letter Subscription Status</th>
+        <th>Membership Id</th>
+        <th>Membership Type</th>
+    </tr>
+
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Dob.ToLongDateString()</td>
+        <td>@Model.IsSubscribedToNewsLetter</td>
+        <td>@Model.MembershipTypeId</td>
+
+        @switch (Model.MembershipType.Id)
+        {
+            case 1:
+                <td>Free free free</td>
+                break;
+            case 2:
+                <td>Quaterly</td>
+                break;
+            case 3:
+                <td>Half yearly</td>
+                break;
+            case 4:
+                <td>Yearly</td>
+                break;
+        }
+
+    </tr>
+
+
+</table>
+
+<button>@Html.ActionLink("Edit User Details", "CustomerForm", Model)</button>
+<button>@Html.ActionLink("Delete", "DeleteUserDetails", Model)</button> 

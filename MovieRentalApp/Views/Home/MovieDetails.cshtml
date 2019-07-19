@@ -1,0 +1,36 @@
+﻿@model MovieRentalApp.Models.Movie
+@{
+    ViewBag.Title = "MovieDetails";
+}
+
+<h2>MovieDetails</h2>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Movie Id</th>
+        <th>Release Date</th>
+        <th>Movie Added on</th>
+        <th>Stock</th>
+        <th>Genre ID</th>
+        <th>Genre</th>
+
+    </tr>
+
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.ReleaseDate.ToLongDateString()</td>
+        <td>@Model.DateAdded.ToLongDateString()</td>
+        <td>@Model.Stock</td>
+        <td>@Model.GenreId</td>
+
+        @switch (Model.GenreId)
+        {
+            case 1:
+                <td>Action</td>
+                break;
+            
+        }
+    </tr>
+
+</table>
+<button>@Html.ActionLink("Edit Movie Details", "MovieForm", Model)</button>

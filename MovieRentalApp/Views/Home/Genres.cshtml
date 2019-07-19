@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MovieRentalApp.Models.Genre>
+@{
+    ViewBag.Title = "Genres";
+}
+
+<h2>Genres</h2>
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Genre Name</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.GenreName</td>
+        </tr>
+    }
+</table>
