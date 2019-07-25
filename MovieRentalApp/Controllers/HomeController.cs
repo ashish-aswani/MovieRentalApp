@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MovieRentalApp.ViewModels;
+using System.Net.Http;
 
 namespace MovieRentalApp.Controllers
 {
+   
     public class HomeController : Controller
     {
         ApplicationDbContext _context;
@@ -21,6 +23,7 @@ namespace MovieRentalApp.Controllers
         {
             _context.Dispose();
         }
+        [AllowAnonymous]
 
         public ActionResult Index()
         {
@@ -38,12 +41,36 @@ namespace MovieRentalApp.Controllers
             var movieDetails = _context.Movies.Include(m => m.Genre).ToList();
             return View(movieDetails.SingleOrDefault(m => m.Id == mv.Id));
         }
+        //public ActionResult Customers()
+        //{
+        //    var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+        //    return View(customers);
+        //}
+
         public ActionResult Customers()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+            IEnumerable<Customer> customers = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:56768/api/");
+                var responseTask = client.GetAsync("customers");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IEnumerable<Customer>>();
+                    readTask.Wait();
+                    customers = readTask.Result;
+                }
+                else
+                {
+                    customers = Enumerable.Empty<Customer>();
+                    ModelState.AddModelError(String.Empty, new Exception());
+                }
+            }
             return View(customers);
         }
-
+        
         public ActionResult CustomerDetails(int? id)
         {
             var customerDetails = _context.Customers.Include(c => c.MembershipType).ToList();
@@ -54,7 +81,7 @@ namespace MovieRentalApp.Controllers
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
-
+        //[ValidateAntiForgeryToken]
         public ActionResult CustomerForm(Customer customer)
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -66,7 +93,7 @@ namespace MovieRentalApp.Controllers
             return View(viewModel);
         }
         [HttpPost]
-
+        [ValidateAntiForgeryToken()]
         public ActionResult SaveUser(Customer customer)
         {
             if (!ModelState.IsValid)

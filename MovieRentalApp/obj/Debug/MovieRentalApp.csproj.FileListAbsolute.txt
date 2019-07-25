@@ -487,3 +487,10 @@ D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\obj\Debug\MovieRe
 D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\obj\Debug\MovieRentalApp.csproj.CopyComplete
 D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\obj\Debug\MovieRentalApp.dll
 D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\obj\Debug\MovieRentalApp.pdb
+D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\bin\System.Net.Http.Formatting.dll
+D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\bin\System.Web.Http.dll
+D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\bin\System.Web.Http.WebHost.dll
+D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\bin\System.Net.Http.Formatting.xml
+D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\bin\System.Web.Http.xml
+D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\bin\System.Web.Http.WebHost.xml
+D:\AshishJune19\MVC\FullMovieApp\MovieRentalApp\MovieRentalApp\obj\Debug\MovieRentalApp.Migrations.userDataLatest.resources
